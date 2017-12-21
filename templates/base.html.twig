@@ -31,10 +31,24 @@
                         <a href="{{ path('add_companies') }}" class="nav">Firma hinzufügen</a>
                     </div>
             </li>
+            <li class="nav dropdown">in 
+                <a href="{{ path('services') }}" class="nav dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ path('services') }}" class="nav">Services</a>
+                    <a href="{{ path('add_service') }}" class="nav">Service hinzufügen</a>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="content">
-        {% block body %} {% endblock %}
+        {% block body %}
+            <h1>Welcome</h1>
+            <div></div>
+            <a href="{{ path('orte')}} " >Alle Orte</a>
+            <a href="{{ path('companies') }}" >Firmen</a>
+            <a href="{{ path('services') }}" >Services</a>
+
+        {% endblock %}
 
     </div>
     {% block javascripts %}

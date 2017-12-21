@@ -39,7 +39,7 @@ li.nav{
     display: none;
     min-width: 100px;
     //background-color: #f4eff0;
-    background-color: #000;
+    background-color: #1a1a1a;
     box-shadow: -8px 8px 16px 0 rgba(0,0,0,0.2),8px 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 999;
 }
@@ -185,7 +185,7 @@ form button[type=submit]:hover {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: tomato;
+    background-color: #660066;
     color: white;
 }
 
