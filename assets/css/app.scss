@@ -1,0 +1,219 @@
+/*$brand-primary: darken(#428bca, 20%);
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';*/
+body{
+  margin: 0;
+}
+*{
+    font-family: Helvetica, sans-serif;
+}
+h1{
+    margin-left: 20px;
+}
+.menu{
+    //background-color: #f2f2f2;
+    background-color: #000;
+}
+#nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+li.nav{
+    float: left;
+}
+  li.nav a.nav, .dropbtn{
+    display: block;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: white;
+}
+  li.nav a.nav:hover, .dropdown:hover .dropbtn{
+    background-color: #e6c300;
+      color: #000;
+}
+.dropdown-content{
+    position: absolute;
+    display: none;
+    min-width: 100px;
+    //background-color: #f4eff0;
+    background-color: #000;
+    box-shadow: -8px 8px 16px 0 rgba(0,0,0,0.2),8px 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 999;
+}
+.dropdown-content > a{
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content > a:hover{
+    //background-color: lightseagreen;
+    background-color: #e6c300;
+    color: #000;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+/*FORM*/
+form{
+    margin: 20px 20px 0 20px;
+    padding-bottom: 30px;
+}
+form select, form input[type=text]{
+    padding: 6px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    min-width: 160px;
+    box-sizing: border-box;
+}
+form button[type=submit] {
+    width: 160px;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    color: black;
+    padding: 8px 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 110%;
+}
+form button[type=submit]:hover {
+    background-color: #0078d7;
+    color: white
+}
+.edit button[type=submit]{
+  position: relative;
+}
+
+.btn{
+    min-width: 100px;
+    background-color: whitesmoke;
+    border: 1px solid #b2180e;
+    color: black;
+    padding: 4px 7px;
+    cursor: pointer;
+    font-size: 110%;
+    margin-left: 20px;
+}
+.btn:hover{
+    background-color: #b2180e;
+    color: white;
+}
+.upd{
+    border: 1px solid darkblue;
+}
+.upd:hover{
+    background-color: #0078d7;
+}
+.items{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.items th,.items td {
+    margin-left: 20px;
+    text-align: left;
+    padding: 8px 8px 8px 30px;
+}
+.items tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.orte{
+    width: 100%;
+}
+.message{
+    text-align: center;
+    color: black;
+    background-color: #4BB543;
+}
+
+/*MODAL BOX*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    text-align: center;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: tomato;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/*Pagination*/
+
+.pagination{
+    list-style-type: none;
+    margin: 20px;
+}
+.pagination > a{
+    text-align: center;
+    padding: 6px 10px;
+    display: inline;
+    text-decoration: none;
+    color: #000;
+    font-size: 17px;
+}
+.pagination > a:hover{
+    background-color: #f2f2f2;
+}
+.active{
+    background-color: #e6e6e6;
+}

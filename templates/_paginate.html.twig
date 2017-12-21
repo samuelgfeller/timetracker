@@ -1,0 +1,31 @@
+{% set parameters = parameters is defined ? parameters : {} %}
+{% set first_parameters = parameters|merge({'page': 1 }) %}
+{% set prev_parameters = parameters|merge({'page': page - 1}) %}
+{% set next_parameters = parameters|merge({'page': page + 1}) %}
+{% set last_parameters = parameters|merge({'page': pages }) %}
+
+{% set additional = 5 %}
+
+{% set start_page = max(1, page - additional) %}
+{% set end_page = min(pages, page + additional) %}
+
+{% set delta = end_page - start_page - additional %}
+{% set end_page = min(pages, end_page + ( delta <= additional ? additional - delta : 0)) %}
+{% set start_page = max(1, start_page - ( delta <= additional ? additional - delta : 0)) %}
+
+<nav aria-label="Page navigation">
+    <div class="pagination">
+        {%  set class = page <= 1 ? 'disabled' : '' %}
+            <a class="{{ class }}" href="{{ path(route, first_parameters) }}" aria-label="Previous"> &laquo; </a>
+
+
+        {% for x in start_page..end_page %}
+            {% set current_parameters = parameters|merge({'page': x }) %}
+            {% set class = page == x ? 'active' : '' %}
+            <a class="{{ class }}" href="{{ path(route, current_parameters) }}"> {{ x }} </a>
+        {% endfor %}
+
+        {%  set class = page >= pages ? 'disabled' : '' %}
+            <a class="{{ class }}" href="{{ path(route, last_parameters) }}" aria-label="Next"> &raquo; </a>
+    </div>
+</nav>

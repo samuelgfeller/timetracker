@@ -1,0 +1,61 @@
+
+{% extends 'base.html.twig' %}
+{% block top %}
+    {% for message in app.flashes('success') %}
+        <div class="message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block body %}
+    <h1>Alle Firmen</h1>
+    <button class="" id="myBtn" onclick="display('{{ path('add_companies') }}')">Firma hinzufügen</button>
+    <div id="dispModal"></div>
+    <table class="items companys">
+        <tr><th>Name</th><th>Adresse</th><th>Ort</th><th>id</th></tr>
+
+        {% for company in companies %}
+            <tr id="company{{ company.id }}">
+                <td>{{ company.name }}</td>
+                <td>{{ company.address }}</td>
+                <td>{{ company.ortId }}</td>
+                <td>{{ company.id }}</td>
+                <td>
+                    <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_company',{'company':company.id } ) }}')">Edit</button>
+                    <button class="btn del" onclick="delOrt( '{{ path('del_company')}}',{{ company.id }},'company' )">Delete</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# Paginator #}
+    {% include '_paginate.html.twig' with {
+        'route': 'companies',
+        'parameters':{},
+        'page': page,
+        'pages': pages,
+    } %}
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Firma anpassen/hinzufügen</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                Loading...
+                <br><br>
+            </div>
+            {#            <div class="modal-footer">
+                            <h3>Modal Footer</h3>
+                        </div>#}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('build/js/ort.js') }}"></script>
+{% endblock %}
