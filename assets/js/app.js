@@ -55,8 +55,16 @@ $( document ).ready(function(){
             success: function(output) {
                 if(toDel==='ort'){
                     $('#ort'+id).remove();
+                    $('#msg').html('Ort erfolgreich gelöscht');
                 }else if(toDel==='company'){
                     $('#company'+id).remove();
+                    $('#msg').html('Firma erfolgreich gelöscht');
+                }else if(toDel==='service'){
+                    $('#service'+id).remove();
+                    $('#msg').html('Service erfolgreich gelöscht');
+                }else if(toDel==='contact'){
+                    $('#contact'+id).remove();
+                    $('#msg').html('Kontakt erfolgreich gelöscht');
                 }
                 // window.location.replace("http://localhost:8000/timetracker/orte");
             }

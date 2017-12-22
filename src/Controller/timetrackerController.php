@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Log;
+use App\Form\TimetrackerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Flex\Response;
@@ -13,34 +15,37 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class timetrackerController extends Controller{
     /**
-     * @Route("/timetracker", name="home")
+     * @Route("/", name="home")
      */
     public function startPage() {
        
-        return $this->render('timetracker/timetracker.php.twig');
+        return $this->render('timetracker/index.html.twig');
     }
-    /**
-     * @Route("/timetracker/testForm")
-     */
-    public function newRequest(Request $request){
-        $task = new Task();
-        
-        $form = $this->createFormBuilder($task)
-            ->add('task', TextType::class)
-            ->add('dueDate', DateType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Task'))
-            ->getForm();
-        
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted()&&$form->isValid()){
-            $task = $form->getData();
-
-            return $this->redirectToRoute('home');
-        }
-    
-        return $this->render('timetracker/newRequest.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
+	
+	/**
+	 * @Route("/erfassen", name="timetracker")
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+	 */
+	public function newLog(Request $request) {
+		$log = new Log();
+		$options = [
+			'action' => $this->generateUrl('timetracker'),
+			'method' => 'post',
+		];
+		$form = $this->createForm(TimetrackerType::class, null, $options);
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()){
+			$company = $form->getData();
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($company);
+			$em->flush();
+			return $this->redirectToRoute('companies');
+		}
+		return $this->render('timetracker/timetracker.html.twig', array(
+			'form' => $form->createView(),
+		));
+	}
+	
+ 
 }

@@ -13,7 +13,18 @@
 </head>
 <body>
 <div class="wrapper">
-    {% block top %} {% endblock %}
+    {% block flash %}
+        {% for message in app.flashes('success') %}
+            <div class="message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endblock %}
+    {% block msg %}
+        <div class="message">
+            <span id="msg"></span>
+        </div>
+    {% endblock %}
     <div class="menu">
         <ul id="nav">
             <li class="nav"><a class="nav" href="{{ path('home') }}">Start</a></li>
@@ -31,23 +42,24 @@
                         <a href="{{ path('add_companies') }}" class="nav">Firma hinzufügen</a>
                     </div>
             </li>
-            <li class="nav dropdown">in
+            <li class="nav dropdown">
                 <a href="{{ path('services') }}" class="nav dropbtn">Services</a>
                 <div class="dropdown-content">
                     <a href="{{ path('services') }}" class="nav">Services</a>
                     <a href="{{ path('add_service') }}" class="nav">Service hinzufügen</a>
                 </div>
             </li>
+            <li class="nav dropdown">
+                <a href="{{ path('contacts') }}" class="nav dropbtn">Kontakte</a>
+                <div class="dropdown-content">
+                    <a href="{{ path('contacts') }}" class="nav">Kontakte</a>
+                    <a href="{{ path('add_contact') }}" class="nav">Kontakt hinzufügen</a>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="content">
         {% block body %}
-            <h1>Welcome</h1>
-            <div></div>
-            <a href="{{ path('orte')}} " >Alle Orte</a>
-            <a href="{{ path('companies') }}" >Firmen</a>
-            <a href="{{ path('services') }}" >Services</a>
-
         {% endblock %}
 
     </div>

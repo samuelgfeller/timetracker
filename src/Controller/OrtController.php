@@ -15,7 +15,7 @@ namespace App\Controller ;
 
     class OrtController extends Controller {
 	    /**
-	     * @Route("/timetracker/orte/{page}", defaults={"page"=1}, name="orte", requirements={"page"="\d+"})
+	     * @Route("/orte/{page}", defaults={"page"=1}, name="orte", requirements={"page"="\d+"})
 	     *
 	     * @param int $page
 	     * @param PaginateService $paginateService
@@ -40,7 +40,7 @@ namespace App\Controller ;
 	    }
 	
 	    /**
-	     * @Route("/timetracker/orte/add", name="add_ort")
+	     * @Route("/orte/add", name="add_ort")
 	     * @param Request $request
 	     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
 	     */
@@ -55,7 +55,7 @@ namespace App\Controller ;
 			    $em->persist($ort);
 			
 			    $em->flush();
-			    $this->addFlash('success', 'Saved new Ort with id: ' . $ort->getId());
+			    $this->addFlash('success', 'Ort erfolgreich hinzugefügt.');
 			
 			    return $this->redirectToRoute('orte');
 			
@@ -64,15 +64,12 @@ namespace App\Controller ;
 	    }
 	
 	    /**
-	     * @Route("/timetracker/orte/edit/{ort}", name="edit_ort", requirements={"ort"="\d+"})
+	     * @Route("/orte/edit/{ort}", name="edit_ort", requirements={"ort"="\d+"})
 	     * @param Ort $ort
 	     * @param Request $request
 	     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
 	     */
 	    public function editOrt(Ort $ort, Request $request) {
-//	    	$ort = $id;
-//		    $repository = $this->getDoctrine()->getRepository(Ort::class);
-//		    $ort = $repository->find($id);
 		    $options = [
 		    	'attr' => [
 		    		'class' => 'edit',
@@ -89,14 +86,15 @@ namespace App\Controller ;
 			
 			    $em->flush();
 			
-			    $this->addFlash('success', 'Saved ort as "' . $ort->getPLZ() . ' ' . $ort->getOrt() . '" id: ' . $ort->getId());
+//			    $this->addFlash('success', 'Saved ort as "' . $ort->getPLZ() . ' ' . $ort->getOrt() . '" id: ' . $ort->getId());
+			    $this->addFlash('success', 'Änderungen gespeichert');
 			
 			    return $this->redirectToRoute('orte');
 		    }
 		    return $this->render('timetracker/form.html.twig', array('form' => $form->createView(),));
 	    }
 	    /**
-	     * @Route("/timetracker/orte/del", name="del_ort")
+	     * @Route("/orte/del", name="del_ort")
 	     */
 	    public function delOrt() {
 		    $repository = $this->getDoctrine()->getRepository(Ort::class);
@@ -107,7 +105,6 @@ namespace App\Controller ;
 		    $em = $this->getDoctrine()->getManager();
 		    $em->remove($ort);
 		    $em->flush();
-		    $this->addFlash('success', 'ort "'.$ort->getPLZ() . ' ' . $ort->getOrt() . '" deleted succefully');
 		
 		    return new Response();
 		

@@ -1,6 +1,6 @@
 
 {% extends 'base.html.twig' %}
-{% block top %}
+{% block flash %}
     {% for message in app.flashes('success') %}
         <div class="message">
             {{ message }}
@@ -54,8 +54,3 @@
     </div>
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-
-    <script type="text/javascript" src="{{ asset('build/js/service.js') }}"></script>
-{% endblock %}

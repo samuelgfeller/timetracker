@@ -30,7 +30,15 @@ class Company
      * @ORM\JoinColumn(name="ort_id", nullable=true)
      */
     private $ort_id;
-    
+	
+	/**
+	 * @ORM\OneToMany(targetEntity="Contact", mappedBy="contact_id")
+	 */
+	private $contacts;
+	
+	public function __toString() {
+		return ''.$this->getName();
+	}
     
     
     /**

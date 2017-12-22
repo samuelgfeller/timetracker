@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CompanyController extends Controller {
 	/**
 	 * @Route(
-	 *     "/timetracker/companies/{page}",
+	 *     "/companies/{page}",
 	 *     defaults={"page" = 1},
 	 *     name="companies",
 	 *     requirements={"page"="\d+"}
@@ -41,7 +41,7 @@ class CompanyController extends Controller {
         ]);
     }
     /**
-     * @Route("/timetracker/companies/add", name="add_companies")
+     * @Route("/companies/add", name="add_companies")
      */
     public function addCompany(Request $request) {
         $company = new Company();
@@ -56,19 +56,18 @@ class CompanyController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($company);
             $em->flush();
-            return $this->redirectToRoute('companies');
+	        $this->addFlash('success', 'Firma erfolgreich hinzugefügt.');
+	        return $this->redirectToRoute('companies');
         }
         return $this->render('timetracker/form.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 	/**
-	 * @Route("/timetracker/companies/edit/{company}", name="edit_company", requirements={"company"="\d+"})
+	 * @Route("/companies/edit/{company}", name="edit_company", requirements={"company"="\d+"})
 	 */
 	public function editCompany(Company $company, Request $request) {
-//	    	$ort = $id;
-//		    $repository = $this->getDoctrine()->getRepository(Ort::class);
-//		    $ort = $repository->find($id);
+
 		$options = [
 			'attr' => [
 				'class' => 'edit',
@@ -85,14 +84,14 @@ class CompanyController extends Controller {
 			
 			$em->flush();
 			
-			$this->addFlash('success', 'Saved company changes.');
+			$this->addFlash('success', 'Änderungen gespeichert');
 			
 			return $this->redirectToRoute('companies');
 		}
 		return $this->render('timetracker/form.html.twig', array('form' => $form->createView(),));
 	}
 	/**
-	 * @Route("/timetracker/companies/del", name="del_company")
+	 * @Route("/companies/del", name="del_company")
 	 */
 	public function delCompany() {
 		$repository = $this->getDoctrine()->getRepository(Company::class);
@@ -103,7 +102,6 @@ class CompanyController extends Controller {
 		$em = $this->getDoctrine()->getManager();
 		$em->remove($company);
 		$em->flush();
-		$this->addFlash('success', 'company "'.$company->getname() . '" deleted succefully');
 		
 		return new Response();
 		

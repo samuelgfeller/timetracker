@@ -1,0 +1,51 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alle Kontakte</h1>
+    <button class="" id="myBtn" onclick="display('{{ path('add_contact') }}')">Kontakt hinzufügen</button>
+    <div id="dispModal"></div>
+    <table class="items contacts">
+        <tr><th>Name</th><th>Adresse</th><th>Ort</th><th>Tätigkeit</th><th>id</th></tr>
+
+        {% for contact in contacts %}
+            <tr id="contact{{ contact.id }}">
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.ortId }}</td>
+                <td>{{ contact.taetigkeit }}</td>
+                <td>{{ contact.id }}</td>
+                <td>
+                    <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_contact',{'contact':contact.id } ) }}')">Edit</button>
+                    <button class="btn del" onclick="delOrt( '{{ path('del_contact')}}',{{ contact.id }},'contact' )">Delete</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# Paginator #}
+    {% include '_paginate.html.twig' with {
+        'route': 'contacts',
+        'parameters':{},
+        'page': page,
+        'pages': pages,
+    } %}
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Kontake anpassen/hinzufügen</h2>
+            </div>
+            <div class="modal-body">
+                <br>
+                Loading...
+                <br><br>
+            </div>
+            {#            <div class="modal-footer">
+                            <h3>Modal Footer</h3>
+                        </div>#}
+        </div>
+    </div>
+{% endblock %}
+

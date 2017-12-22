@@ -32,6 +32,11 @@ class Ort {
      */
     private $companies;
     
+	/**
+	 * @ORM\OneToMany(targetEntity="Contact", mappedBy="ort_id")
+	 */
+	private $contacts;
+    
 	public function __toString() {
 		return $this->getPLZ().' '.$this->getOrt();
 	}

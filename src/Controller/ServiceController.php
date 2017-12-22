@@ -14,7 +14,7 @@ class ServiceController extends Controller
 {
 	/**
 	 * @Route(
-	 *     "/timetracker/services/{page}",
+	 *     "/services/{page}",
 	 *     defaults={"page" = 1},
 	 *     name="services",
 	 *     requirements={"page"="\d+"}
@@ -42,7 +42,7 @@ class ServiceController extends Controller
 	}
 	
 	/**
-	 * @Route("/timetracker/services/add", name="add_service")
+	 * @Route("/services/add", name="add_service")
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
 	 */
@@ -59,6 +59,8 @@ class ServiceController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($service);
 			$em->flush();
+			$this->addFlash('success', 'Service erfolgreich hinzugefügt.');
+			
 			return $this->redirectToRoute('services');
 		}
 		return $this->render('timetracker/form.html.twig', array(
@@ -67,7 +69,7 @@ class ServiceController extends Controller
 	}
 	
 	/**
-	 * @Route("/timetracker/services/edit/{service}", name="edit_service", requirements={"service"="\d+"})
+	 * @Route("/services/edit/{service}", name="edit_service", requirements={"service"="\d+"})
 	 * @param Service $service
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -92,14 +94,14 @@ class ServiceController extends Controller
 			
 			$em->flush();
 			
-			$this->addFlash('success', 'Saved service changes.');
+			$this->addFlash('success', 'Änderungen gespeichert');
 			
 			return $this->redirectToRoute('services');
 		}
 		return $this->render('timetracker/form.html.twig', array('form' => $form->createView(),));
 	}
 	/**
-	 * @Route("/timetracker/services/del", name="del_service")
+	 * @Route("/services/del", name="del_service")
 	 */
 	public function delService() {
 		$repository = $this->getDoctrine()->getRepository(Service::class);
@@ -107,7 +109,6 @@ class ServiceController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$em->remove($service);
 		$em->flush();
-		$this->addFlash('success', 'service "'.$service->getname() . '" deleted succefully');
 		
 		return new Response();
 		

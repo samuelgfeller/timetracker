@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block top %}
+{% block flash %}
     {% for message in app.flashes('success') %}
         <div class="message">
             {{ message }}
@@ -10,10 +10,10 @@
     <h1>Alle Services</h1>
     <button class="" id="myBtn" onclick="display('{{ path('add_service') }}')">Service hinzufügen</button>
     <div id="dispModal"></div>
-    <table class="items orte">
-        <tr><th>Servicename</th><th>id</th></tr>
+    <table class="items services">
+        <tr><th>Service</th><th>id</th></tr>
         {% for service in services %}
-            <tr id="ort{{ service.id }}">
+            <tr id="service{{ service.id }}">
                 <td>{{ service.name }}</td>
                 <td>{{ service.id }}</td>
                 <td>

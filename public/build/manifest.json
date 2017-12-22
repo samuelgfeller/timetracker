@@ -1,6 +1,8 @@
 {
   "build/css/app.css": "/build/css/app.css",
   "build/css/loader.css": "/build/css/loader.css",
+  "build/images/ant.jpg": "/build/images/ant.jpg",
+  "build/images/sunset.js": "/build/images/sunset.js",
   "build/js/app.js": "/build/js/app.js",
   "build/js/ort.js": "/build/js/ort.js"
 }
