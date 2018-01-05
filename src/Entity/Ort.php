@@ -16,17 +16,16 @@ class Ort {
      */
     private $id;
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(name="ort", type="string", length=45, nullable=false)
      * @Assert\NotBlank()
      */
     private $ort;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="plz", type="integer", nullable=false)
      *  @Assert\NotBlank()
      */
     private $PLZ;
     
-
     /**
      * @ORM\OneToMany(targetEntity="Company", mappedBy="ort_id")
      */

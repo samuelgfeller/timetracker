@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
     <h1>Alle Services</h1>
-    <button class="" id="myBtn" onclick="display('{{ path('add_service') }}')">Service hinzufügen</button>
+    <button class="btn add" id="myBtn" onclick="display('{{ path('add_service') }}')">Service hinzufügen</button>
     <div id="dispModal"></div>
     <table class="items services">
         <tr><th>Service</th><th>id</th></tr>
@@ -49,7 +49,9 @@
         </div>
     </div>
 {% endblock %}
-
+{% block documentReady %}
+    hashAdd('{{ path('add_service')}}');
+{% endblock %}
 {#
 {% block javascripts %}
     {{ parent() }}

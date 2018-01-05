@@ -3,7 +3,7 @@
 
 {% block body %}
     <h1>Alle Kontakte</h1>
-    <button class="" id="myBtn" onclick="display('{{ path('add_contact') }}')">Kontakt hinzufügen</button>
+    <button class="btn add" id="myBtn" onclick="display('{{ path('add_contact') }}')">Kontakt hinzufügen</button>
     <div id="dispModal"></div>
     <table class="items contacts">
         <tr><th>Name</th><th>Adresse</th><th>Ort</th><th>Tätigkeit</th><th>id</th></tr>
@@ -48,4 +48,6 @@
         </div>
     </div>
 {% endblock %}
-
+{% block documentReady %}
+    hashAdd('{{ path('add_contact')}}');
+{% endblock %}

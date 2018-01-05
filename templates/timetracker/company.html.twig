@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 {% block flash %}
     {% for message in app.flashes('success') %}
@@ -8,11 +7,17 @@
     {% endfor %}
 {% endblock %}
 {% block body %}
+
     <h1>Alle Firmen</h1>
-    <button class="" id="myBtn" onclick="display('{{ path('add_companies') }}')">Firma hinzufügen</button>
+    <button class="btn add" id="myBtn" onclick="display('{{ path('add_companies') }}')">Firma hinzufügen</button>
     <div id="dispModal"></div>
     <table class="items companys">
-        <tr><th>Name</th><th>Adresse</th><th>Ort</th><th>id</th></tr>
+        <tr>
+            <th>Name</th>
+            <th>Adresse</th>
+            <th>Ort</th>
+            <th>id</th>
+        </tr>
 
         {% for company in companies %}
             <tr id="company{{ company.id }}">
@@ -21,8 +26,13 @@
                 <td>{{ company.ortId }}</td>
                 <td>{{ company.id }}</td>
                 <td>
-                    <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_company',{'company':company.id } ) }}')">Edit</button>
-                    <button class="btn del" onclick="delOrt( '{{ path('del_company')}}',{{ company.id }},'company' )">Delete</button></td>
+                    <button class="btn upd" id="myBtn"
+                            onclick="display('{{ path('edit_company',{'company':company.id } ) }}')">Edit
+                    </button>
+                    <button class="btn del" onclick="delOrt( '{{ path('del_company') }}',{{ company.id }},'company' )">
+                        Delete
+                    </button>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -34,7 +44,6 @@
         'page': page,
         'pages': pages,
     } %}
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -53,4 +62,20 @@
         </div>
     </div>
 {% endblock %}
+{% block documentReady %}
+    hashAdd('{{ path('add_companies')}}');
+{% endblock %}
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<script type="text/javascript">#}
+        {#$(document).ready(function () {#}
+            {#hashAdd('{{ path('add_companies')}}');#}
+        {#});#}
+    {#</script>#}
+{#{% endblock %}#}
+{#window.onload = function () {
+hashAdd('{{ path('add_companies') }}');
 
+$(document).ready(function () {
+            hashAdd('{{ path('add_companies') }}');
+        }); #}

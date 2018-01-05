@@ -15,7 +15,7 @@ class ServiceType extends AbstractType
     {
         $builder
 	        ->add('name', TextType::class, [
-		        'label' => 'name ',
+		        'label' => 'Name ',
 	        ])
 	        ->add('submit', SubmitType::class)
         ;
