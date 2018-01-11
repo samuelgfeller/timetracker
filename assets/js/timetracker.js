@@ -1,19 +1,19 @@
-$( document ).ready(function(){
+// $( document ).ready(function(){
 
 $('#timeForm').submit( function(event) {
 // testAjax=function() {
 
     event.preventDefault();
-    var contact_id = document.getElementById("timetracker_contact_id").value;
-    var url = '/ajax/checkLog/'+contact_id;
+
+    var contact = document.getElementById("timetracker_contact").value;
+    var url = '/ajax/checkLog/'+contact;
     $.ajax({ url: url,
         type: 'post',
 /*        data: {
-            "contact_id": contact_id,
+            "contact": contact,
         },*/
         async: false,
         success: function(output) {
-
             if (output.status === true) {
                 var r = confirm("Zeiterfassung für diesen Kontakt läuft schon.\nFortsetzen mit den alten Einstellungen?");
                 if (r == true) {
@@ -38,6 +38,5 @@ $('#timeForm').submit( function(event) {
             console.log('error '+output);
         }
     });
-// }
-});
-});
+    });
+// });

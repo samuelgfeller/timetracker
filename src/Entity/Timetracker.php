@@ -24,7 +24,7 @@ class Timetracker {
 	 * @ORM\JoinColumn(name="company_id", nullable=false)
 	 * @Assert\NotBlank()
 	 */
-	private $company_id;
+	private $company;
 	/**
 	 * @var Contact
 	 *
@@ -32,7 +32,7 @@ class Timetracker {
 	 * @ORM\JoinColumn(name="contact_id", nullable=false)
 	 * @Assert\NotBlank()
 	 */
-	private $contact_id;
+	private $contact;
 	/**
 	 * @var Service
 	 *
@@ -40,7 +40,7 @@ class Timetracker {
 	 * @ORM\JoinColumn(name="service_id", nullable=false)
 	 * @Assert\NotBlank()
 	 */
-	private $service_id;
+	private $service;
 	
 	/**
 	 * @var \DateTime
@@ -80,43 +80,43 @@ class Timetracker {
 	/**
 	 * @return Company
 	 */
-	public function getCompanyId() {
-		return $this->company_id;
+	public function getCompany() {
+		return $this->company;
 	}
 	
 	/**
-	 * @param Company $company_id
+	 * @param Company $company
 	 */
-	public function setCompanyId(Company $company_id): void {
-		$this->company_id = $company_id;
+	public function setCompany(Company $company): void {
+		$this->company = $company;
 	}
 	
 	/**
 	 * @return Contact
 	 */
-	public function getContactId() {
-		return $this->contact_id;
+	public function getContact() {
+		return $this->contact;
 	}
 	
 	/**
-	 * @param Contact $contact_id
+	 * @param Contact $contact
 	 */
-	public function setContactId($contact_id): void {
-		$this->contact_id = $contact_id;
+	public function setContact($contact): void {
+		$this->contact = $contact;
 	}
 	
 	/**
 	 * @return Service
 	 */
-	public function getServiceId() {
-		return $this->service_id;
+	public function getService() {
+		return $this->service;
 	}
 	
 	/**
-	 * @param Service $service_id
+	 * @param Service $service
 	 */
-	public function setServiceId($service_id): void {
-		$this->service_id = $service_id;
+	public function setService($service): void {
+		$this->service = $service;
 	}
 	/**
 	 * @return mixed

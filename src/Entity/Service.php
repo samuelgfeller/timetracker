@@ -27,7 +27,7 @@ class Service
 	/**
 	 * @var Timetracker
 	 *
-	 * @ORM\OneToMany(targetEntity="App\Entity\Timetracker", mappedBy="service_id")
+	 * @ORM\OneToMany(targetEntity="App\Entity\Timetracker", mappedBy="service")
 	 */
 	private $logs;
 	

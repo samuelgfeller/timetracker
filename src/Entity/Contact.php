@@ -35,7 +35,7 @@ class Contact {
 	 * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="contacts")
 	 * @ORM\JoinColumn(name="company_id", nullable=true)
 	 */
-	private $company_id;
+	private $company;
 	
 	/**
 	 * @ORM\Column(name="taetigkeit", type="string", length=100, nullable=true)
@@ -45,7 +45,7 @@ class Contact {
 	/**
 	 * @var Timetracker
 	 *
-	 * @ORM\OneToMany(targetEntity="App\Entity\Timetracker", mappedBy="contact_id")
+	 * @ORM\OneToMany(targetEntity="App\Entity\Timetracker", mappedBy="contact")
 	 */
 	private $logs;
 	
@@ -112,15 +112,15 @@ class Contact {
 	/**
 	 * @return mixed
 	 */
-	public function getCompanyId() {
-		return $this->company_id;
+	public function getCompany() {
+		return $this->company;
 	}
 	
 	/**
-	 * @param mixed $company_id
+	 * @param mixed $company
 	 */
-	public function setCompanyId($company_id): void {
-		$this->company_id = $company_id;
+	public function setCompany($company): void {
+		$this->company = $company;
 	}
 	
 	/**

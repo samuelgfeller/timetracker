@@ -91,7 +91,7 @@ namespace App\Controller ;
 			
 			    return $this->redirectToRoute('orte');
 		    }
-		    return $this->render('timetracker/form.html.twig', array('form' => $form->createView(),));
+		    return $this->render('timetracker/form.html.twig', ['form' => $form->createView(),]);
 	    }
 	    /**
 	     * @Route("/orte/del", name="del_ort")

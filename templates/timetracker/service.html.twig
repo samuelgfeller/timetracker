@@ -1,11 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block flash %}
-    {% for message in app.flashes('success') %}
-        <div class="message">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endblock %}
+
 {% block body %}
     <h1>Alle Services</h1>
     <button class="btn add" id="myBtn" onclick="display('{{ path('add_service') }}')">Service hinzufügen</button>

@@ -154,7 +154,13 @@ div label {
 .message{
   text-align: center;
   color: black;
+}
+.success{
   background-color: #4BB543;
+}
+.error{
+  background-color: darkred;
+  color: white;
 }
 
 /*MODAL BOX*/
@@ -293,9 +299,9 @@ to {top:0; opacity:1}
   background: whitesmoke;
   //box-shadow: inset 0 0 10px grey;
   //box-shadow: 0 0 15px #ccc;
+
   width: 180px;
 }
-
 .formBox > form > div{
   width: auto;
   margin: auto;
@@ -305,21 +311,21 @@ to {top:0; opacity:1}
   display: inline;
 }
 .formBox > form button[type=submit] {
-    width: 180px;
-    background-color: white;
-    border-radius:3px;
-    border: 1px dashed black;
-    color: black;
-    padding: 8px 19px;
-    cursor: pointer;
-    font-size: 110%;
-  }
+  width: 180px;
+  background-color: white;
+  border-radius:3px;
+  border: 1px dashed black;
+  color: black;
+  padding: 8px 19px;
+  cursor: pointer;
+  font-size: 110%;
+}
 .formBox > form button[type=submit]:hover {
-    background-color:  #6e6666;
-    border: 1px solid #6e6666;
-    box-shadow: 0 0 5px #cccccc;
-    color: white
-  }
+  background-color:  #6e6666;
+  border: 1px solid #6e6666;
+  box-shadow: 0 0 5px #cccccc;
+  color: white
+}
 .plus{
   top: 5px;
   width: 25px;
@@ -330,4 +336,26 @@ to {top:0; opacity:1}
   border-radius: 25px;
   background-color: #99ff99;
   cursor: pointer;
+}
+.stopFormBox{
+  display: table;
+  width: auto;
+  text-align: center;
+  max-width: 80%;
+}
+.stopFormBox > table{
+  border-spacing: 10px;
+}
+#startInfos{
+  text-align: left;
+}
+#startInfos td{
+  padding-left:  20px;
+  color: #cc0000;
+}
+.stopBtn{
+  width: 170px;
+  height: 70px;
+  margin-top:20px;
+  border-radius: 5px;
 }

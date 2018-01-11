@@ -23,7 +23,7 @@ class TimetrackerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-	        ->add('company_id', EntityType::class, [
+	        ->add('company', EntityType::class, [
 		        'label' => 'Firma ',
 		        'class' => Company::class,
 		        'attr' => [
@@ -31,11 +31,11 @@ class TimetrackerType extends AbstractType
 		        ],
 		        'placeholder' => '--- Bitte Auswählen ---',
 	        ])
-//	        ->add('contact_id', EntityType::class, [
+//	        ->add('contact', EntityType::class, [
 //		        'label' => 'Kontakt ',
 //		        'class' => Contact::class,
 //	        ])
-	        ->add('service_id', EntityType::class, [
+	        ->add('service', EntityType::class, [
 		        'label' => 'Service ',
 		        'class' => Service::class,
 	        ])
@@ -56,7 +56,7 @@ class TimetrackerType extends AbstractType
 	        ->add('starten', SubmitType::class)
         ;
 	    $formModifier = function (FormInterface $form, Company $company = null) {
-	    	$form->add('contact_id', EntityType::class, [
+	    	$form->add('contact', EntityType::class, [
 			    'label' => 'Kontakt ',
 		    	'class' => Contact::class,
 			    'choices' => $company ? $company->getContacts() : [],
@@ -67,11 +67,11 @@ class TimetrackerType extends AbstractType
 		    FormEvents::PRE_SET_DATA,
 		    function (FormEvent $event) use ($formModifier) {
 			    $data = $event->getData();
-			    $formModifier($event->getForm(), $data ? $data->getCompanyId() : null);
+			    $formModifier($event->getForm(), $data ? $data->getCompany() : null);
 		    }
 	    );
 	
-	    $builder->get('company_id')->addEventListener(
+	    $builder->get('company')->addEventListener(
 		    FormEvents::POST_SUBMIT,
 		    function (FormEvent $event) use ($formModifier) {
 			    // It's important here to fetch $event->getForm()->getData(), as

@@ -1,10 +1,47 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {#{{ dump(app.session.all) }}#}
     <div class="timetrackerContent">
+
         <h1 style="text-align: center">Zeit erfassen</h1>
-        <div class="formBox">
-            <form action="">
-                <input type="submit" value="Stop">
+        {#<ul id="startInfos">#}
+            {#<li>Start: </li>#}
+            {#<li>Kontakt: </li>#}
+            {#<li>Firma: </li>#}
+            {#<li>Service:</li>#}
+            {#<li>Kommentar: </li>#}
+        {#</ul>#}
+        <div class="formBox stopFormBox">
+            <table id="startInfos">
+                <tr>
+                    <th>Datum: </th>
+                    <td>{{ log.von|date('d.m.Y')  }}</td>
+                </tr>
+                <tr>
+                    <th>Startzeit: </th>
+                    <td>{{ log.von|date('G:i:s') }} Uhr</td>
+                </tr>
+                <tr>
+                    <th>Kontakt: </th>
+                    <td>{{ log.contact.name }}</td>
+                </tr>
+                <tr>
+                    <th>Firma: </th>
+                    <td>{{ log.company.name }}</td>
+                </tr>
+                <tr>
+                    <th>Service: </th>
+                    <td>{{ log.service.name }}</td>
+                </tr>
+                {% if log.comment is not null and log.comment is not empty %}
+                <tr>
+                    <th>Kommentar: </th>
+                    <td id="test">{{ log.comment }}</td>
+                </tr>
+                {% endif %}
+            </table>
+            <form action="{{ path('stop_time') }}">
+                <input class="btn del stopBtn" type="submit" value="Stop">
             </form>
         </div>
     </div>

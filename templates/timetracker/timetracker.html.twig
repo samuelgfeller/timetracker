@@ -5,15 +5,15 @@
         <div class="formBox">
             {#<button class="btn" onclick="testAjax()">test</button>#}
             {{ form_start(form) }}
-            {{ form_label(form.company_id) }} <img class="plus" onclick="window.location.href='companies#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
-            {{ form_errors(form.company_id) }}
-            {{ form_widget(form.company_id) }}
-            {{ form_label(form.contact_id) }} <img class="plus" onclick="window.location.href='contacts#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
-            {{ form_errors(form.contact_id) }}
-            {{ form_widget(form.contact_id) }}
-            {{ form_label(form.service_id) }} <img class="plus" onclick="window.location.href='services#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
-            {{ form_errors(form.service_id) }}
-            {{ form_widget(form.service_id) }}
+            {{ form_label(form.company) }} <img class="plus" onclick="window.location.href='companies#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
+            {{ form_errors(form.company) }}
+            {{ form_widget(form.company) }}
+            {{ form_label(form.contact) }} <img class="plus" onclick="window.location.href='contacts#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
+            {{ form_errors(form.contact) }}
+            {{ form_widget(form.contact) }}
+            {{ form_label(form.service) }} <img class="plus" onclick="window.location.href='services#add'" src="https://png.icons8.com/ios/50/000000/plus.png">
+            {{ form_errors(form.service) }}
+            {{ form_widget(form.service) }}
             {{ form_row(form.comment) }}
             {{ form_end(form) }}
         </div>

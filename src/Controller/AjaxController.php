@@ -49,7 +49,6 @@ class AjaxController extends Controller
 				'status' => true
 			]);
 		}
-		
 		return new JsonResponse([
 			'status' => false
 		]);

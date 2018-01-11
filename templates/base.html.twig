@@ -13,8 +13,14 @@
 <body>
 <div class="wrapper">
     {% block flash %}
-        {% for message in app.flashes('success') %}
-            <div class="message">
+
+        {% for message in  app.flashes('success')%}
+            <div class="message success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in  app.flashes('error')%}
+            <div class="message error">
                 {{ message }}
             </div>
         {% endfor %}
@@ -75,7 +81,7 @@ $(document).ready(function () {
 {% block javascripts %}
     {#<script src="{{ 'node_modules/jquery/dist/jquery.min.js' }}"></script>#}
     <script type="text/javascript" src="{{ asset('build/js/app.js') }}"></script>
-    {#<script type="text/javascript" src="{{ asset('build/js/timetracker.js') }}"></script>#}
+    <script type="text/javascript" src="{{ asset('build/js/timetracker.js') }}"></script>
 {% endblock %}
 </body>
 </html>

@@ -33,7 +33,7 @@ class ContactType extends AbstractType
 		        'label' => 'Ort ',
 		        'class' => Ort::class,
 	        ])
-	        ->add('company_id', EntityType::class, [
+	        ->add('company', EntityType::class, [
 		        'label' => 'Firma',
 	                    'class' => Company::class,
 		      ])

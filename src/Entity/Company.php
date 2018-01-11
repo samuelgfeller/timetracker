@@ -38,14 +38,14 @@ class Company
     private $ort_id;
 	
 	/**
-	 * @ORM\OneToMany(targetEntity="Contact", mappedBy="company_id")
+	 * @ORM\OneToMany(targetEntity="Contact", mappedBy="company")
 	 */
 	private $contacts;
 	
 	/**
 	 * @var Timetracker
 	 *
-	 * @ORM\OneToMany(targetEntity="Timetracker", mappedBy="company_id")
+	 * @ORM\OneToMany(targetEntity="Timetracker", mappedBy="company")
 	 */
 	private $logs;
 	

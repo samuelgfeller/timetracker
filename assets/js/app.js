@@ -62,14 +62,14 @@ display=function (url) {
         var id = company_field.value;
         var url = '/ajax/get_contacts/'+id;
 
-        $('#timetracker_contact_id').empty();
+        $('#timetracker_contact').empty();
 
         $.ajax({
             url: url,
             type: 'get',
             success: function(output) {
                 $.each(output, function(key, value){
-                    $('#timetracker_contact_id')
+                    $('#timetracker_contact')
                         .append($('<option>', { value : key })
                             .text(value));
                 });
