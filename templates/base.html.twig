@@ -26,7 +26,7 @@
         {% endfor %}
     {% endblock %}
     {% block msg %}
-        <div class="message">
+        <div class="message success">
             <span id="msg"></span>
         </div>
     {% endblock %}
@@ -34,6 +34,7 @@
         <ul id="nav">
             <li class="nav"><a class="nav" href="{{ path('home') }}">Start</a></li>
             <li class="nav"><a class="nav" href="{{ path('timetracker') }}">Zeit erfassen</a></li>
+            <li class="nav"><a class="nav" href="{{ path('history') }}">Verlauf</a></li>
             <li class="nav dropdown">
                 <a href="{{ path('orte')}}" class="nav dropbtn">Ort</a>
                 <div class="dropdown-content">
@@ -82,6 +83,11 @@ $(document).ready(function () {
     {#<script src="{{ 'node_modules/jquery/dist/jquery.min.js' }}"></script>#}
     <script type="text/javascript" src="{{ asset('build/js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/js/timetracker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/company.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/service.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/log.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/ort.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/contact.js') }}"></script>
 {% endblock %}
 </body>
 </html>

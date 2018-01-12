@@ -6,13 +6,13 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class PaginateService{
-	public function getPagesCount(Query $query, $pageSize = 10) { //CHANGE
+	public function getPagesCount(Query $query, $pageSize = 15) { //CHANGE
 		$paginator=new Paginator($query);
 		$paginator->setUseOutputWalkers(false);
 		return ceil($paginator->count() / $pageSize);
 	}
 	
-	public function paginate(Query $query , ?int $currentPage = 1, ?int $pagesize=10) {//change
+	public function paginate(Query $query , ?int $currentPage = 1, ?int $pagesize=15) {//change
 		if ($pagesize<1){
 			$pagesize=10; //change
 		}

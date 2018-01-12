@@ -1,9 +1,12 @@
 {
   "build/css/app.css": "/build/css/app.css",
-  "build/css/loader.css": "/build/css/loader.css",
   "build/images/ant.jpg": "/build/images/ant.9fc8905f.jpg",
-  "build/images/sunset.js": "/build/images/sunset.js",
+  "build/images/ant.jpg.js": "/build/images/ant.jpg.js",
   "build/js/app.js": "/build/js/app.js",
+  "build/js/company.js": "/build/js/company.js",
+  "build/js/contact.js": "/build/js/contact.js",
+  "build/js/log.js": "/build/js/log.js",
   "build/js/ort.js": "/build/js/ort.js",
+  "build/js/service.js": "/build/js/service.js",
   "build/js/timetracker.js": "/build/js/timetracker.js"
 }

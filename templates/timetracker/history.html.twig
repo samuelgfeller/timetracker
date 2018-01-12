@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Alle Logs</h1>
+    <button class="btn add" id="myBtn" onclick="display('{{ path('add_log') }}')">Log hinzufügen</button>
+    <div id="dispModal"></div>
+    <table class="items logs">
+        <th>Datum</th>
+        <th>Kontakt</th>
+        <th>Startzeit</th>
+        <th>Endzeit</th>
+        <th>Total</th>
+        <th>Firma</th>
+        <th>Service</th>
+        <th>Kommentar</th>
+        <th>Id</th>
+        <th></th> {#buttons#}
+        <th></th> {#buttons#}
+
+        {% for log in logs %}
+            {% set class = log.totalTime.d is defined and log.totalTime.d >= 1  ? 'warning' : '' %}
+            <tr id="log{{ log.id }}" class="{{ class }}">
+
+                <td>{{ log.von|date('d.m.Y') }}
+                {% if log.von|date('d.m.Y') != log.bis|date('d.m.Y') %}
+                    bis {{ log.bis|date('d.m.Y') }}
+                {% endif %}
+                </td>
+
+                <td>{{ log.contact.name }}</td>
+
+                <td>{{ log.von|date('G:i:s') }} Uhr</td>
+
+                {% if log.bis is not null and log.bis is not empty %}
+                    <td>{{ log.bis|date('G:i:s') }} Uhr</td>
+                {% else %}
+                    <td> -</td>
+                {% endif %}
+
+                <td>
+                    {% if log.totalTime.d is defined %}
+                        {% if log.totalTime.d != 0 %}
+                            {{ log.totalTime.d }} Tage
+                        {% endif %}
+                        {% if log.totalTime.h != 0 %}
+                            {{ log.totalTime.h }} Std.
+                        {% endif %}
+                        {% if log.totalTime.i != 0 %}
+                            {{ log.totalTime.i }} Min.
+                        {% endif %}
+                        {{ log.totalTime.s }} s.
+                    {% else %}
+                        -
+                    {% endif %}
+
+                </td>
+
+                <td>{{ log.company.name }}</td>
+
+                <td>{{ log.service.name }}</td>
+
+                {% if log.comment is not null and log.comment is not empty %}
+                    <td id="test">{{ log.comment }}</td>
+                {% else %}
+                    <td> -</td>
+                {% endif %}
+                <td>{{ log.id }}</td>
+                <td class="btnTd">
+                    <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_log',{'log':log.id } ) }}')">Edit</button>
+                    <button class="btn del" onclick="delLog( {{ log.id }})">Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# Paginator #}
+    {% include '_paginate.html.twig' with {
+        'route': 'history',
+        'parameters':{},
+        'page': page,
+        'pages': pages,
+    } %}
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Log anpassen/hinzufügen</h2>
+            </div>
+            <div class="modal-body">
+                Loading...
+            </div>
+            {#            <div class="modal-footer">
+                            <h3>Modal Footer</h3>
+                        </div>#}
+        </div>
+    </div>
+{% endblock %}
+
+{#{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('build/js/ort.js') }}"></script>
+{% endblock %}#}

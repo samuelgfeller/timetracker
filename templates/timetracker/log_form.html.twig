@@ -1,0 +1,17 @@
+<div class="formBox">
+    {{ form_start(form) }}
+    {{ form_label(form.company) }}
+    {{ form_errors(form.company) }}
+    {{ form_widget(form.company) }}
+    {{ form_label(form.contact) }}
+    {{ form_errors(form.contact) }}
+    {{ form_widget(form.contact) }}
+    {{ form_label(form.service) }}
+    {{ form_errors(form.service) }}
+    {{ form_widget(form.service) }}
+    {{ form_row(form.von) }}
+    {{ form_row(form.bis) }}
+    {{ form_row(form.comment) }}
+    {{ form_end(form) }}
+
+</div>

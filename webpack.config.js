@@ -14,10 +14,14 @@ Encore
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/ort', './assets/js/ort.js')
     .addEntry('js/timetracker', './assets/js/timetracker.js')
-    .addEntry('images/sunset', './assets/img/ant.jpg')
+    .addEntry('js/log', './assets/js/log.js')
+    .addEntry('js/contact', './assets/js/contact.js')
+    .addEntry('js/company', './assets/js/company.js')
+    .addEntry('js/service', './assets/js/service.js')
+    // .addEntry('images/ant.jpg', './assets/img/ant.jpg')
 
     .addStyleEntry('css/app', './assets/css/app.scss')
-    .addStyleEntry('css/loader', './assets/css/loader.scss')
+    // .addStyleEntry('css/loader', './assets/css/loader.scss')
 
     // uncomment if you use Sass/SCSS files
     .enableSassLoader()

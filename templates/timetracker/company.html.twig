@@ -29,7 +29,7 @@
                     <button class="btn upd" id="myBtn"
                             onclick="display('{{ path('edit_company',{'company':company.id } ) }}')">Edit
                     </button>
-                    <button class="btn del" onclick="delOrt( '{{ path('del_company') }}',{{ company.id }},'company' )">
+                    <button class="btn del" onclick="delCompany({{ company.id }})">
                         Delete
                     </button>
                 </td>

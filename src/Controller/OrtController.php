@@ -77,13 +77,11 @@ namespace App\Controller ;
 				    ]];
 		    $form = $this->createForm(OrtType::class, $ort, $options);
 		    $form->handleRequest($request);
-		    
 		    if ($form->isSubmitted() && $form->isValid()) {
 		    	
 			    $ort = $form->getData();
 			    $em = $this->getDoctrine()->getManager();
 			    $em->persist($ort);
-			
 			    $em->flush();
 			
 //			    $this->addFlash('success', 'Saved ort as "' . $ort->getPLZ() . ' ' . $ort->getOrt() . '" id: ' . $ort->getId());

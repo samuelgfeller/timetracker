@@ -17,7 +17,7 @@
                 <td>{{ contact.id }}</td>
                 <td>
                     <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_contact',{'contact':contact.id } ) }}')">Edit</button>
-                    <button class="btn del" onclick="delOrt( '{{ path('del_contact')}}',{{ contact.id }},'contact' )">Delete</button></td>
+                    <button class="btn del" onclick="delContact({{ contact.id }})">Delete</button></td>
             </tr>
         {% endfor %}
     </table>

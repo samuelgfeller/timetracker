@@ -50,6 +50,16 @@ class TimetrackerRepository extends ServiceEntityRepository
 	}
 	return true;
     }
+	
+	/**
+	 * @return \Doctrine\ORM\Query
+	 */
+	public function getHistoryQuery() {
+		$queryBuilder=$this->createQueryBuilder('o');
+		return $queryBuilder
+			->orderBy('o.von',' DESC')
+			->getQuery();
+	}
 /*    public function findBySomething($value){
         return $this->createQueryBuilder('t')
             ->where('t.something = :value')->setParameter('value', $value)

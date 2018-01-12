@@ -62,8 +62,8 @@ form{
     //margin-top: 20px ;
     //padding-bottom: 30px;
 }
-form select, form input[type=text]{
-  width: 180px;
+form select, form input{
+  width: 200px;
   padding: 6px 10px;
   margin: 8px 0;
   display: inline-block;
@@ -72,12 +72,12 @@ form select, form input[type=text]{
   box-sizing: border-box;
 }
 form button[type=submit] {
-  width: 180px;
+  width: 200px;
   background-color: white;
   border-radius:3px;
   border: 1px solid black;
   color: black;
-  padding: 5px 10px;
+  padding: 10px 10px;
   cursor: pointer;
   font-size: 110%;
 }
@@ -91,7 +91,7 @@ form button[type=submit]:hover {
   position: relative;
 }*/
 form > div{
-  width: 180px;
+  width: 200px;
   margin: auto;
 }
 div label {
@@ -147,7 +147,12 @@ div label {
 .items tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
+.btnTd{
+  height: auto;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .orte{
   width: 100%;
 }
@@ -251,6 +256,7 @@ to {top:0; opacity:1}
 .active{
   background-color: #e6e6e6;
 }
+//Home
 .startBox{
   position: relative;
   min-width: 13%;
@@ -278,7 +284,7 @@ to {top:0; opacity:1}
   width: 100%;
   margin-bottom: 40px;
 }
-
+//Timetracker
 .content{
   margin: 0;
   padding: 0;
@@ -294,13 +300,11 @@ to {top:0; opacity:1}
 }
 .formBox{
   margin: 20px auto;
-  padding: 40px 200px;
-  border-radius: 20px;
-  background: whitesmoke;
+
   //box-shadow: inset 0 0 10px grey;
   //box-shadow: 0 0 15px #ccc;
 
-  width: 180px;
+  width: 200px;
 }
 .formBox > form > div{
   width: auto;
@@ -310,17 +314,20 @@ to {top:0; opacity:1}
   text-align: left;
   display: inline;
 }
-.formBox > form button[type=submit] {
-  width: 180px;
+.timetracker, .stopFormBox{
+  padding: 40px 200px;
+  border-radius: 20px;
+  background: whitesmoke;
+}
+.timetracker > form button[type=submit] {
+  width: 200px;
   background-color: white;
-  border-radius:3px;
-  border: 1px dashed black;
+
   color: black;
   padding: 8px 19px;
-  cursor: pointer;
   font-size: 110%;
 }
-.formBox > form button[type=submit]:hover {
+.timetracker > form button[type=submit]:hover {
   background-color:  #6e6666;
   border: 1px solid #6e6666;
   box-shadow: 0 0 5px #cccccc;
@@ -337,6 +344,7 @@ to {top:0; opacity:1}
   background-color: #99ff99;
   cursor: pointer;
 }
+/*STOP FORM*/
 .stopFormBox{
   display: table;
   width: auto;
@@ -358,4 +366,8 @@ to {top:0; opacity:1}
   height: 70px;
   margin-top:20px;
   border-radius: 5px;
+}
+/*History*/
+.warning{
+  background-color: #ff9380 !important;
 }

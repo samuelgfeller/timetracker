@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\Timetracker;
 use App\Form\TimetrackerType;
+use App\Service\PaginateService;
 use Proxies\__CG__\App\Entity\Ort;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -96,8 +97,6 @@ class timetrackerController extends Controller{
 	 * @throws \Doctrine\ORM\NonUniqueResultException
 	 */
 	public function stopTimer() {
-
-		
 		//check if session exists and get object
 		if ($timetracker=$this->container->get('session')->get('log')) {
 			//make connection to repository
@@ -123,6 +122,9 @@ class timetrackerController extends Controller{
 		}
 		return $this->redirectToRoute('home');
 	}
+	
+
+	
 	
 
 	

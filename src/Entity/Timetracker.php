@@ -64,6 +64,11 @@ class Timetracker {
 	private $comment;
 	
 	/**
+	 * @var
+	 */
+	private $totalTime;
+	
+	/**
 	 * @return mixed
 	 */
 	public function getId() {
@@ -118,6 +123,7 @@ class Timetracker {
 	public function setService($service): void {
 		$this->service = $service;
 	}
+	
 	/**
 	 * @return mixed
 	 */
@@ -133,9 +139,9 @@ class Timetracker {
 	}
 	
 	/**
-	 * @return \DateTime
+	 * @return mixed
 	 */
-	public function getBis(): \DateTime {
+	public function getBis() {
 		return $this->bis;
 	}
 	
@@ -149,7 +155,7 @@ class Timetracker {
 	/**
 	 * @return \DateTime
 	 */
-	public function getVon(): \DateTime {
+	public function getVon()/*: \DateTime*/ {
 		return $this->von;
 	}
 	
@@ -158,6 +164,20 @@ class Timetracker {
 	 */
 	public function setVon(\DateTime $von): void {
 		$this->von = $von;
+	}
+	
+	/**
+	 * @return object
+	 */
+	public function getTotalTime() {
+		return $this->totalTime;
+	}
+	
+	/**
+	 * @param object $totalTime
+	 */
+	public function setTotalTime($totalTime) {
+		$this->totalTime = $totalTime;
 	}
 	
 }

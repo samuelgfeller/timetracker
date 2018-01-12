@@ -96,6 +96,7 @@ class CompanyController extends Controller {
 	public function delCompany() {
 		$repository = $this->getDoctrine()->getRepository(Company::class);
 		$company = $repository->find($_POST['id']);
+
 		if (!$company){
 			throw $this->createNotFoundException('No company found');
 		}
