@@ -9,7 +9,11 @@ delLog = function (id) {
             },
             success: function (output) {
                 $('#log' + id).remove();
-                $('#msg').html('Log erfolgreich gelöscht');
+                $('#successMsg').html('Log erfolgreich gelöscht');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(ajaxOptions,thrownError,xhr);
+                $('#errorMsg').html('<b>Fehler:</b> Log konnte nicht gelöscht werden ('+thrownError+')');
             }
         });
     }

@@ -18,6 +18,23 @@ class ContactRepository extends ServiceEntityRepository
 			->orderBy('contact.name','ASC') //sort , order by
 			->getQuery();
 	}
+	/**
+	 * @param $input
+	 * @return mixed
+	 */
+	public function getSearchResult($input) {
+		$qb = $this->createQueryBuilder('u');
+		$result = $qb->where(
+			$qb->expr()->like('u.name', ':input')
+		)
+			->orWhere(
+				$qb->expr()->like('u.id', ':input')
+			)
+			->setParameter('input', '%' .$input. '%')
+			->getQuery()
+			->getResult();
+		return $result;
+	}
     /*
     public function findBySomething($value)
     {

@@ -56,11 +56,18 @@ class ServiceController extends Controller
 		$form->handleRequest($request);
 		if ($form->isSubmitted() && $form->isValid()){
 			$service = $form->getData();
+			//check if exists
+			$repository = $this->getDoctrine()->getRepository(Service::class);
+			$result = $repository->checkIfExists($service->getName());
+			//if there is no result that means that it doesnt exist
+			if (!$result) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($service);
 			$em->flush();
 			$this->addFlash('success', 'Service erfolgreich hinzugefügt.');
-			
+			} else {
+				$this->addFlash('error', 'Service mit dem Namen ' . $service->getName() . ' existiert schon.');
+			}
 			return $this->redirectToRoute('services');
 		}
 		return $this->render('timetracker/form.html.twig', array(
@@ -87,15 +94,21 @@ class ServiceController extends Controller
 		$form->handleRequest($request);
 		
 		if ($form->isSubmitted() && $form->isValid()) {
-			
 			$service = $form->getData();
+			//look in db if Service with new name exists
+			$repository = $this->getDoctrine()->getRepository(Service::class);
+			$result = $repository->checkIfExists($service->getName());
+			//if result is null it means that there is no Service. But if the name is not edited, there will be another I check if the Id matches
+			if (!$result || $service->getId() == $result->getId()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($service);
 			
 			$em->flush();
 			
 			$this->addFlash('success', 'Änderungen gespeichert');
-			
+			} else {
+				$this->addFlash('error', 'Service mit dem Namen ' . $service->getName() . ' existiert schon.');
+			}
 			return $this->redirectToRoute('services');
 		}
 		return $this->render('timetracker/form.html.twig', array('form' => $form->createView(),));

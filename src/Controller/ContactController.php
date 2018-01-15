@@ -7,6 +7,7 @@ use App\Form\ContactType;
 use App\Service\PaginateService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -111,5 +112,28 @@ class ContactController extends Controller
 		
 		return new Response();
 		
+	}
+	/**
+	 * @Route("/contacts/find", name="find_company")
+	 */
+	public function findContact(Request $request)
+	{
+		$repository = $this->getDoctrine()->getRepository(Contact::class);
+		$contacts = $repository->getSearchResult($request->get('inputVal'));
+		$compArr = [];
+		/** @var Contact $contact */
+		foreach ($contacts as $contact) {
+			$arr = [
+				'id' => $contact->getId(),
+				'name' => $contact->getName(),
+				'address' => $contact->getAddress(),
+				'ort' => $contact->getOrtId()->getPLZ().' '.$contact->getOrtId()->getOrt(),
+				'taetigkeit' => $contact->getAddress(),
+			];
+			$contactArr[] = $arr;
+		}
+//		echo json_encode($compArr);
+		return new JsonResponse($contactArr);
+//		exit();
 	}
 }

@@ -9,7 +9,11 @@ delService = function (id) {
             },
             success: function (output) {
                 $('#service' + id).remove();
-                $('#msg').html('Service erfolgreich gelöscht');
+                $('#successMsg').html('Service erfolgreich gelöscht');
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(ajaxOptions,thrownError,xhr);
+                $('#errorMsg').html('<b>Fehler:</b> Service konnte nicht gelöscht werden ('+thrownError+')');
             }
         });
     }

@@ -9,22 +9,25 @@
 {% block body %}
 
     <h1>Alle Firmen</h1>
+    <div class="search">
+        <input type="text" placeholder="Firma suchen" onkeyup="searchCompany(this.value)">
+    </div>
     <button class="btn add" id="myBtn" onclick="display('{{ path('add_companies') }}')">Firma hinzufügen</button>
     <div id="dispModal"></div>
-    <table class="items companys">
+    <table class="items companies" id="companiesTable">
         <tr>
+            <th>id</th>
             <th>Name</th>
             <th>Adresse</th>
             <th>Ort</th>
-            <th>id</th>
         </tr>
 
         {% for company in companies %}
             <tr id="company{{ company.id }}">
+                <td>{{ company.id }}</td>
                 <td>{{ company.name }}</td>
                 <td>{{ company.address }}</td>
                 <td>{{ company.ortId }}</td>
-                <td>{{ company.id }}</td>
                 <td>
                     <button class="btn upd" id="myBtn"
                             onclick="display('{{ path('edit_company',{'company':company.id } ) }}')">Edit
@@ -36,7 +39,9 @@
             </tr>
         {% endfor %}
     </table>
-
+    <div class="noResults">
+        <p>Keine Resultate gefunden</p>
+    </div>
     {# Paginator #}
     {% include '_paginate.html.twig' with {
         'route': 'companies',
@@ -65,14 +70,10 @@
 {% block documentReady %}
     hashAdd('{{ path('add_companies')}}');
 {% endblock %}
-{#{% block javascripts %}#}
-    {#{{ parent() }}#}
-    {#<script type="text/javascript">#}
-        {#$(document).ready(function () {#}
-            {#hashAdd('{{ path('add_companies')}}');#}
-        {#});#}
-    {#</script>#}
-{#{% endblock %}#}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('build/js/company.js') }}"></script>
+{% endblock %}
 {#window.onload = function () {
 hashAdd('{{ path('add_companies') }}');
 

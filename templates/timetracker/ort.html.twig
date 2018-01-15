@@ -1,23 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Alle Orte</h1>
+
+    {#<div class="top">#}
+        <h1>Alle Orte</h1>
+    <div class="search">
+        <input type="text" placeholder="Ort suchen" onkeyup="searchOrt(this.value)">
+    </div>
     <button class="btn add" id="myBtn" onclick="display('{{ path('add_ort') }}')">Ort hinzufügen</button>
+    {#</div>#}
     <div id="dispModal"></div>
-    <table class="items orte">
-        <tr><th>Postleitzahl</th><th>Ort</th><th>id</th></tr>
+    <table class="items orte" id="orteTable">
+        <tr><th>id</th><th>Postleitzahl</th><th>Ort</th></tr>
         {% for ort in orte %}
             <tr id="ort{{ ort.id }}">
+                <td>{{ ort.id }}</td>
                 <td>{{ ort.plz }}</td>
                 <td>{{ ort.ort }}</td>
-                <td>{{ ort.id }}</td>
                 <td>
                     <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_ort',{'ort':ort.id } ) }}')">Edit</button>
                     <button class="btn del" onclick="delOrt({{ ort.id }})">Delete</button></td>
             </tr>
         {% endfor %}
     </table>
-
+    <div class="noResults">
+        <p>Keine Resultate gefunden</p>
+    </div>
     {# Paginator #}
     {% include '_paginate.html.twig' with {
         'route': 'orte',
@@ -25,7 +33,6 @@
         'page': page,
         'pages': pages,
     } %}
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">

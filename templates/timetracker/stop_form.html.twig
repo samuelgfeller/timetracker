@@ -3,7 +3,7 @@
     {#{{ dump(app.session.all) }}#}
     <div class="timetrackerContent">
 
-        <h1 style="text-align: center">Zeit erfassen</h1>
+        <h1 style="text-align: center">Zeit am laufen...</h1>
         {#<ul id="startInfos">#}
             {#<li>Start: </li>#}
             {#<li>Kontakt: </li>#}
@@ -44,5 +44,16 @@
                 <input class="btn del stopBtn" type="submit" value="Stop">
             </form>
         </div>
+        <div class="loadingAnimation">
+            <div class="squares">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
     </div>
 {% endblock %}

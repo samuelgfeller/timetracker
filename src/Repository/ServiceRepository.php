@@ -18,7 +18,20 @@ class ServiceRepository extends ServiceEntityRepository
 			->orderBy('s.name','ASC') //sort , order by
 			->getQuery();
 	}
-	
+	/**
+	 * @param $name
+	 * @return bool
+	 * @throws \Doctrine\ORM\NonUniqueResultException
+	 */
+	public function checkIfExists($name) {
+		return $this->createQueryBuilder('t')
+			->where('t.name= :name')
+			->setParameter('name', $name)
+			->getQuery()
+			->getOneOrNullResult()
+			;
+		
+	}
 	/*
 	public function findBySomething($value)
 	{

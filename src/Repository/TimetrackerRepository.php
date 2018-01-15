@@ -45,7 +45,7 @@ class TimetrackerRepository extends ServiceEntityRepository
 			->getQuery()
 			->getOneOrNullResult()
 		;
-	if(empty($a)){
+	if(!empty($a)){
 		return false;
 	}
 	return true;
@@ -58,6 +58,7 @@ class TimetrackerRepository extends ServiceEntityRepository
 		$queryBuilder=$this->createQueryBuilder('o');
 		return $queryBuilder
 			->orderBy('o.von',' DESC')
+			->orderBy('o.bis',' DESC')
 			->getQuery();
 	}
 /*    public function findBySomething($value){

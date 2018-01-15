@@ -41,11 +41,13 @@ class timetrackerController extends Controller{
 		$timetrackerRepository = $entityManager->getRepository('App:Timetracker');
 		
 		
-		if($this->container->get('session')->get('log')){
-//			$oldTimetracker=$timetrackerRepository->findActiveByContact([/*$session->get('log')->getContact()*/]);
-			return $this->render('timetracker/stop_form.html.twig', [
-				'log' => $this->container->get('session')->get('log')
-			]);
+		if($log = $this->container->get('session')->get('log')){
+			$check=$timetrackerRepository->checkIfStopped($log->getContact(),$log->getVon());
+			if ($check === false){
+				return $this->render('timetracker/stop_form.html.twig', [
+					'log' => $this->container->get('session')->get('log')
+				]);
+			}
 		}
 		
 		$options = [
@@ -104,7 +106,7 @@ class timetrackerController extends Controller{
 			$timetrackerRepository = $entityManager->getRepository('App:Timetracker');
 			//check if time already stopped
 			$check=$timetrackerRepository->checkIfStopped($timetracker->getContact(),$timetracker->getVon());
-			if ($check === true){
+			if ($check === false){
 				//modify object
 				$timetracker->setBis(new \DateTime());
 				//get doctrine manager

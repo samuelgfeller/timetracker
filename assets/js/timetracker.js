@@ -28,14 +28,14 @@ $('#timeForm').submit( function(event) {
                     $('#timeForm').unbind('submit').submit(); //make submit event continue
                 }else{
                     return false; //breaks down the submit event
-                    //location.replace("http://localhost/timetracker2/index.php");
                 }
             }else{
                 $('#timeForm').unbind('submit').submit();
             }
         },
-        error: function (output) {
-            console.log('error '+output);
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(ajaxOptions,thrownError,xhr);
+            $('#errorMsg').html('<b>Fehler:</b> es konnte nicht geprüft werden ob ein Eintrag schon am laufen ist ('+thrownError+')');
         }
     });
     });

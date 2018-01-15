@@ -27,7 +27,10 @@
     {% endblock %}
     {% block msg %}
         <div class="message success">
-            <span id="msg"></span>
+            <span id="successMsg"></span>
+        </div>
+        <div class="message error">
+            <span id="errorMsg"></span>
         </div>
     {% endblock %}
     <div class="menu">
@@ -82,12 +85,6 @@ $(document).ready(function () {
 {% block javascripts %}
     {#<script src="{{ 'node_modules/jquery/dist/jquery.min.js' }}"></script>#}
     <script type="text/javascript" src="{{ asset('build/js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/timetracker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/company.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/service.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/log.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/ort.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('build/js/contact.js') }}"></script>
 {% endblock %}
 </body>
 </html>

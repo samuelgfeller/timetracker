@@ -5,14 +5,20 @@
     <button class="btn add" id="myBtn" onclick="display('{{ path('add_service') }}')">Service hinzufügen</button>
     <div id="dispModal"></div>
     <table class="items services">
-        <tr><th>Service</th><th>id</th></tr>
+        <tr>
+            <th>id</th>
+            <th>Service</th>
+        </tr>
         {% for service in services %}
             <tr id="service{{ service.id }}">
-                <td>{{ service.name }}</td>
                 <td>{{ service.id }}</td>
+                <td>{{ service.name }}</td>
                 <td>
-                    <button class="btn upd" id="myBtn" onclick="display('{{ path('edit_service',{'service':service.id } ) }}')">Edit</button>
-                    <button class="btn del" onclick="delService({{ service.id }})">Delete</button></td>
+                    <button class="btn upd" id="myBtn"
+                            onclick="display('{{ path('edit_service',{'service':service.id } ) }}')">Edit
+                    </button>
+                    <button class="btn del" onclick="delService({{ service.id }})">Delete</button>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -44,12 +50,9 @@
     </div>
 {% endblock %}
 {% block documentReady %}
-    hashAdd('{{ path('add_service')}}');
+    hashAdd('{{ path('add_service') }}');
 {% endblock %}
-{#
 {% block javascripts %}
     {{ parent() }}
-
     <script type="text/javascript" src="{{ asset('build/js/service.js') }}"></script>
 {% endblock %}
-#}
