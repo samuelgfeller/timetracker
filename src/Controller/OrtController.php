@@ -131,7 +131,7 @@ class OrtController extends Controller {
 	{
 		$repository = $this->getDoctrine()->getRepository(Ort::class);
 		$orte = $repository->getSearchResult($request->get('inputVal'));
-		$orteArr = [];
+		$orteArr = null;
 		/** @var Ort $ort */
 		foreach ($orte as $ort) {
 			$arr = [
@@ -141,9 +141,9 @@ class OrtController extends Controller {
 			];
 			$orteArr[] = $arr;
 		}
-		echo json_encode($orteArr);
-//		return new JsonResponse($orteArr);
-		exit();
+//		echo json_encode($orteArr);
+		return new JsonResponse($orteArr);
+//		exit();
 	}
 	
 }

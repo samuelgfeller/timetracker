@@ -120,7 +120,7 @@ class ContactController extends Controller
 	{
 		$repository = $this->getDoctrine()->getRepository(Contact::class);
 		$contacts = $repository->getSearchResult($request->get('inputVal'));
-		$compArr = [];
+		$contactArr = null;
 		/** @var Contact $contact */
 		foreach ($contacts as $contact) {
 			$arr = [

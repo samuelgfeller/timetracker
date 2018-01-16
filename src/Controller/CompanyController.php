@@ -128,10 +128,10 @@ class CompanyController extends Controller {
 	/**
 	 * @Route("/companies/find")
 	 */
-	public function test(Request $request) {
+	public function findCompany(Request $request) {
 		$repository = $this->getDoctrine()->getRepository(Company::class);
 		$companies = $repository->getSearchResult($request->get('inputVal'));
-		$compArr = [];
+		$compArr = null;
 		/** @var Company $company */
 		foreach ($companies as $company) {
 			$arr = [

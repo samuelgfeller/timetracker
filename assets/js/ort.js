@@ -61,8 +61,8 @@ delOrt = function (id) {
             // console.log(data);
             // $('#test').html(JSON.stringify(data, null, 4));
 // $('#orteTable').html(JSON.parse(data));
-            if(data != '[]') {
-                data = JSON.parse(data);
+            if(data.length>0) {
+                // data = JSON.parse(data);
                 var table = document.getElementById("orteTable");
 
                 $(".orte tr").not(':first').remove();
