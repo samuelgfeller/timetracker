@@ -1,19 +1,18 @@
-// $( document ).ready(function(){
-
-$('#timeForm').submit( function(event) {
+$('#timeForm').submit(function (event) {
 // testAjax=function() {
 
     event.preventDefault();
 
     var contact = document.getElementById("timetracker_contact").value;
-    var url = '/ajax/checkLog/'+contact;
-    $.ajax({ url: url,
+    var url = '/ajax/checkLog/' + contact;
+    $.ajax({
+        url: url,
         type: 'post',
-/*        data: {
-            "contact": contact,
-        },*/
+        /*        data: {
+                    "contact": contact,
+                },*/
         async: false,
-        success: function(output) {
+        success: function (output) {
             if (output.status === true) {
                 var r = confirm("Zeiterfassung für diesen Kontakt läuft schon.\nFortsetzen mit den alten Einstellungen?");
                 if (r == true) {
@@ -23,20 +22,52 @@ $('#timeForm').submit( function(event) {
                         value: "true"
                     });
                     //insert a hidden input w. name "exists"
-                    $(function() { $('#timeForm').append( input ); });
+                    $(function () {
+                        $('#timeForm').append(input);
+                    });
                     $('#timeForm').append($(input));
                     $('#timeForm').unbind('submit').submit(); //make submit event continue
-                }else{
+                } else {
                     return false; //breaks down the submit event
                 }
-            }else{
+            } else {
                 $('#timeForm').unbind('submit').submit();
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(ajaxOptions,thrownError,xhr);
-            $('#errorMsg').html('<b>Fehler:</b> es konnte nicht geprüft werden ob ein Eintrag schon am laufen ist ('+thrownError+')');
+            console.log(ajaxOptions, thrownError, xhr);
+            $('#errorMsg').html('<b>Fehler:</b> es konnte nicht geprüft werden ob ein Eintrag schon am laufen ist (' + thrownError + ')');
         }
     });
+});
+// $( document ).ready(function(){
+startPause = function() {
+    $.ajax({
+        url: '/timetracker/start_pause',
+        type: 'post',
+        success: function (output) {
+            $('#pauseBtn').html('Continue');
+            $("#pauseBtn").attr("onclick","stopPause()");
+        },
+        error: function (error){
+            alert(error);
+        }
     });
+};
+stopPause = function () {
+    $.ajax({
+        url: '/timetracker/stop_pause',
+        type: 'post',
+        success: function (output) {
+            $('#pauseBtn').html('Pause');
+            $("#pauseBtn").attr("onclick","startPause()");
+        },
+        error: function (error){
+            alert(error);
+        }
+    });
+};
+
+
+
 // });

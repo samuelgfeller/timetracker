@@ -53,7 +53,7 @@ class TimetrackerType extends AbstractType
 			        'value' => 'false',
 		        ],
 	        ])*/
-	        ->add('starten', SubmitType::class)
+	        ->add('Starten', SubmitType::class)
         ;
 	    $formModifier = function (FormInterface $form, Company $company = null) {
 	    	$form->add('contact', EntityType::class, [

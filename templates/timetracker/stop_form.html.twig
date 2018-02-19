@@ -40,9 +40,11 @@
                 </tr>
                 {% endif %}
             </table>
-            <form action="{{ path('stop_time') }}">
+            <button class="btn add pauseBtn" id="pauseBtn" onclick="startPause()">Pause</button>
+            <form class="stopForm" action="{{ path('stop_time') }}">
                 <input class="btn del stopBtn" type="submit" value="Stop">
             </form>
+
         </div>
         <div class="loadingAnimation">
             <div class="squares">
@@ -56,4 +58,8 @@
                 <span></span>
             </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('build/js/timetracker.js') }}"></script>
 {% endblock %}

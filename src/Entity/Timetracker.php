@@ -57,6 +57,21 @@ class Timetracker {
 	private $bis;
 	
 	/**
+	 * Dieser Wert wird ständig überschrieben
+	 * 	@var \DateTime
+	 *
+	 * @ORM\Column(name="pause_von", type="datetime", nullable=true)
+	 */
+	private $pauseVon;
+	
+	/**
+	 * @var
+	 *
+	 * @ORM\Column(name="total_pause_min", type="integer", nullable=false)
+	 */
+	private $totalPauseMin = 0;
+	
+	/**
 	 * @var string
 	 *
 	 * @ORM\Column(type="string", length=45, nullable=true)
@@ -178,6 +193,48 @@ class Timetracker {
 	 */
 	public function setTotalTime($totalTime) {
 		$this->totalTime = $totalTime;
+	}
+	
+	/**
+	 * @return \DateTime
+	 */
+	public function getPauseVon(): \DateTime {
+		return $this->pauseVon;
+	}
+	
+	/**
+	 * @param \DateTime $pauseVon
+	 */
+	public function setPauseVon(\DateTime $pauseVon): void {
+		$this->pauseVon = $pauseVon;
+	}
+	
+	/**
+	 * @return \DateTime
+	 */
+	public function getPauseBis(): \DateTime {
+		return $this->pauseBis;
+	}
+	
+	/**
+	 * @param \DateTime $pauseBis
+	 */
+	public function setPauseBis(\DateTime $pauseBis): void {
+		$this->pauseBis = $pauseBis;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getTotalPauseMin() {
+		return $this->totalPauseMin;
+	}
+	
+	/**
+	 * @param mixed $totalPauseMin
+	 */
+	public function setTotalPauseMin($totalPauseMin): void {
+		$this->totalPauseMin = $totalPauseMin;
 	}
 	
 }
